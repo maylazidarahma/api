@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tes Api</title>
+    
+</head>
+<body>
+    <h2>Tes API</h2>
+    <table border="1" id="tabel_data">
+        <tr>
+            <td id="id">id</td>
+            <td id="1">employee_name</td>
+            <td id="2">employee_salary</td>
+            <td id="3">employee_age</td>
+        </tr>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+          $.ajax({url:"http://dummy.restapiexample.com/api/v1/employees", success: function(result) {
+            var temp = JSON.parse(result);
+            $(function () {
+			var data ='';
+			$.each(temp,function (key, value) {
+			data += '<tr>';
+			data += '<td>'+value.id+'</td>';
+			data += '<td>'+value.employee_name+'</td>';
+			data += '<td>'+value.employee_salary+'</td>';
+			data += '<td>'+value.employee_age+'</td>';
+			data += '</tr>';
+			
+
+		});
+		$('#tabel_data').append(data);
+	});
+	}});
+    </script>
+</body>
+</html>
